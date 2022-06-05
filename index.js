@@ -8,7 +8,20 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (date, pos) => {
+  const temp = [];
+  for (let i = 0; i < date.length; i++) {
+    const dates = Date.parse(date[i]);
+    const result = (dates/1000).toString();
+    temp.push(result);
+  }
+  if(pos==undefined){
+    const sortDate = temp.sort((a, b) => a - b);
+    return sortDate.join('-');
+  }
+  const sortDate = temp.sort((a, b) => a + b);
+  return sortDate[pos];
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
@@ -19,6 +32,7 @@ const createDate = null;
 
   // '1614841200' (dalam string)
   console.log(createDate?.(dates, 2));
+  // '1614841200' (dalam string)
 })();
 
 module.exports = {
